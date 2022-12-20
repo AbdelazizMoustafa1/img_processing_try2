@@ -4,15 +4,15 @@ import apiRoute from './routes/api';
 const port = 3000;
 
 const app = express();
-app.use(express.json());
+
 app.use('/api', apiRoute);
 
 app.get('/',(_req, res) => {
-  res.json({message: 'use api/images?filename={file} with optional height and width'});
+  res.json({message: 'To start, add /api/images?filename=filenae&<optional>height=10&<optional>width=20 to the address bar'});
 });
 
 app.listen(port, () => {
-  console.log(`listeneiong on port ${port}`);
+  console.log(`image processing and listeneiong on port ${port}`);
 });
 
 export default app;
