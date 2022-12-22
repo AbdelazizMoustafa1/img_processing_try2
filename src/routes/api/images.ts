@@ -1,14 +1,16 @@
 import express from 'express';
-import fs from 'fs';
-import path from 'path';
-import { imageExists,validateDimentions } from '../../middlewares/quiriesValidation';
+import {
+  imgExists,
+  validateDimentions
+} from '../../middlewares/quiriesValidation';
+import { getImage } from '../../utils/utils';
 
-const imageRoute = express.Router();
-imageRoute.use([imageExists, validateDimentions]);
+const imgDispRoute = express.Router();
+imgDispRoute.use([imgExists, validateDimentions]);
 
-const imagePath = path.join('..','..','images');
-imageRoute.get( '/', (req,res) => {
-    res.json(req.query);
+imgDispRoute.get('/', async (req, res) => {
+  const imgP = await getImage(req.query);
+  res.sendFile(imgP);
 });
 
-export default imageRoute;
+export default imgDispRoute;
