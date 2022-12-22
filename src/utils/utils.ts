@@ -52,7 +52,7 @@ const cacheDirCreation = (): void => {
 
 // using the image file with resizing
 export const getImage = async (
-  queries: Record<string, any>
+  queries: Record<string, unknown>
 ): Promise<string> => {
   const { filename, height, width } = queries;
   const heightNum = parseInt(height as string);
@@ -64,7 +64,7 @@ export const getImage = async (
     return originalPath;
   } else {
     cacheDirCreation();
-    let imgPath = path.join(
+    const imgPath = path.join(
       imgsDir,
       'cache',
       filename + `_H${height}_W${width}.jpg`
