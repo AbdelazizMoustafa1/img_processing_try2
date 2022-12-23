@@ -26,7 +26,7 @@ export const imgExists = (
     res
       .status(400)
       .send(
-        `please choose a filename and make sure it's from here {${imgsNames}}and add it without .jpg `
+        `please choose a filename and make sure it's from here {${imgsNames}}and add it without .jpg`
       );
   }
 };

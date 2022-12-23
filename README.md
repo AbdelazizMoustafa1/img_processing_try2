@@ -14,6 +14,8 @@ build and run jasmine or to run tests:
 npm run test
 to start the server: 
 npm run start
+If using Windows and want to start the server and open ur default browser on 'http://localhost:3000' by one command use:
+npm run startall
 
 port 3000 was chosen. It needs to be used in localhost as
 http://localhost:3000/

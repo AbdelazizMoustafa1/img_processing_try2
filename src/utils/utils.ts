@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
+import { ParsedQs } from 'qs';
 
 // searching for the images directory in our project using recursion
 export const getImagesDir = (dir: string = __dirname): string => {
@@ -27,7 +28,7 @@ export const getImagesDir = (dir: string = __dirname): string => {
 const imgsDir = getImagesDir();
 
 // resize function
-const resizeWorH = async (
+export const resizeWorH = async (
   inP: string,
   outP: string,
   height?: number,
@@ -43,7 +44,7 @@ const resizeWorH = async (
 };
 
 // create cached directory once when requested if not there
-const cacheDirCreation = (): void => {
+export const cacheDirCreation = (): void => {
   const cachePath = path.join(imgsDir, 'cache');
   if (!fs.existsSync(cachePath)) {
     fs.mkdirSync(cachePath);
@@ -51,9 +52,7 @@ const cacheDirCreation = (): void => {
 };
 
 // using the image file with resizing
-export const getImage = async (
-  queries: Record<string, unknown>
-): Promise<string> => {
+export const getImage = async (queries: ParsedQs): Promise<string> => {
   const { filename, height, width } = queries;
   const heightNum = parseInt(height as string);
   const widthNum = parseInt(width as string);
